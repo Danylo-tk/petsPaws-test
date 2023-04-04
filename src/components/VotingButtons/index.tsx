@@ -1,6 +1,6 @@
 import { Container, Wrapper, VoteIcon } from "./styles";
 
-const VotingWidget = () => {
+const VotingButtons = () => {
   return (
     <Container>
       <Wrapper>
@@ -22,4 +22,4 @@ const VotingWidget = () => {
   );
 };
 
-export default VotingWidget;
+export default VotingButtons;
