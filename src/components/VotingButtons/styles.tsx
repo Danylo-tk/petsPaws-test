@@ -25,6 +25,7 @@ const Wrapper = styled.ul`
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 
   li:nth-child(1) {

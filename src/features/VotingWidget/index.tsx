@@ -6,14 +6,15 @@ import VotingButtons from "../../components/VotingButtons";
 const VotingWidget = () => {
   const {
     data: randImg,
-    isLoading,
+    isFetching,
     isSuccess,
     isError,
     error,
-  } = useGetRandImgQuery("");
+    refetch,
+  } = useGetRandImgQuery();
 
   let content;
-  if (isLoading) {
+  if (isFetching) {
     content = <img src={loader} alt="" />;
   } else if (isSuccess) {
     content = (
@@ -28,7 +29,7 @@ const VotingWidget = () => {
   return (
     <>
       <ImgContainer>{content}</ImgContainer>
-      <VotingButtons />
+      <VotingButtons imageId={randImg?.id} imageRefetch={refetch} />
     </>
   );
 };
