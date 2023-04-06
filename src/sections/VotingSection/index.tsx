@@ -5,7 +5,6 @@ const VotingSection = () => {
   return (
     <ContentSection sectionName="voting">
       <VotingWidget />
-      <p>actions log</p>
     </ContentSection>
   );
 };

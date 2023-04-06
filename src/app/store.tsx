@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "../features/api/apiSlice";
+import votingWidgetReducer from "../features/VotingWidget/votingWidgetSlice";
 
 export const store = configureStore({
   reducer: {
+    votingWidget: votingWidgetReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
 

@@ -2,25 +2,43 @@ import {
   useFavouriteImgMutation,
   useVoteImgMutation,
 } from "../../features/api/apiSlice";
+import { useAppDispatch } from "../../app/hooks";
+import {
+  addVote,
+  addImageId,
+  addVotesTime,
+} from "../../features/VotingWidget/votingWidgetSlice";
 import { Container, Wrapper, VoteIcon } from "./styles";
 
 interface ButtonsProps {
-  imageId: number | undefined;
+  imageId: number;
   imageRefetch: Function;
 }
 
 const VotingButtons = ({ imageId, imageRefetch }: ButtonsProps) => {
   const [voteImg] = useVoteImgMutation();
   const [favouriteImg] = useFavouriteImgMutation();
+  const dispatch = useAppDispatch();
 
   return (
     <Container>
-      <Wrapper>
+      <Wrapper
+        // setting onClick actions that are common for all child elelments:
+        onClick={() => {
+          dispatch(addImageId(imageId.toString()));
+          const now = new Date();
+          const hours = now.getHours();
+          const minutes = now.getMinutes();
+          dispatch(addVotesTime(`${hours}:${minutes}`));
+          imageRefetch();
+        }}
+      >
         <li
           onClick={() => {
-            const voteValue: number = 1;
+            //so that later on we will be able to distinguish what is like and what is dislike I'm setting voteValue:
+            const voteValue: number = 1; //voteValue = 1 means LIKE,
             voteImg({ imageId, voteValue });
-            imageRefetch();
+            dispatch(addVote("Likes"));
           }}
         >
           <VoteIcon className="material-symbols-outlined">
@@ -30,16 +48,17 @@ const VotingButtons = ({ imageId, imageRefetch }: ButtonsProps) => {
         <li
           onClick={() => {
             favouriteImg(imageId);
-            imageRefetch();
+            // the Cat API processes favourites seperaly from likes and dislikes
+            dispatch(addVote("Favourites"));
           }}
         >
           <VoteIcon className="material-symbols-outlined">favorite</VoteIcon>
         </li>
         <li
           onClick={() => {
-            const voteValue: number = -1;
+            const voteValue: number = -1; //voteValue = -1 means DISLIKE
             voteImg({ imageId, voteValue });
-            imageRefetch();
+            dispatch(addVote("Dislikes"));
           }}
         >
           <VoteIcon className="material-symbols-outlined">
