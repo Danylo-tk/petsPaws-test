@@ -7,6 +7,12 @@ type Image = {
   url: string;
 };
 
+interface ReactionImage {
+  id: number;
+  value: number;
+  image: Image;
+}
+
 interface ReturnedImg {
   imgId: string;
   subId: string;
@@ -31,11 +37,11 @@ export const apiSlice = createApi({
       since it's returned inside an array of length one */,
     }),
 
-    getVotes: builder.query<Image[], void>({
+    getVotes: builder.query<ReactionImage[], void>({
       query: () => "/votes",
     }),
 
-    getFavourites: builder.query<Image[], void>({
+    getFavourites: builder.query<ReactionImage[], void>({
       query: () => "/favourites",
     }),
 
@@ -57,6 +63,20 @@ export const apiSlice = createApi({
         body: { image_id: imageId, sub_id: "user-123" },
       }),
     }),
+
+    deleteVote: builder.mutation<Image, number>({
+      query: (deleteImageId) => ({
+        url: "/votes" + "/" + deleteImageId,
+        method: "DELETE",
+      }),
+    }),
+
+    deleteFavourite: builder.mutation<Image, number>({
+      query: (deleteImageId) => ({
+        url: "/favourites" + "/" + deleteImageId,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -66,4 +86,6 @@ export const {
   useGetFavouritesQuery,
   useFavouriteImgMutation,
   useVoteImgMutation,
+  useDeleteVoteMutation,
+  useDeleteFavouriteMutation,
 } = apiSlice;
