@@ -1,15 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { apiSlice } from "../features/api/apiSlice";
+import { votingApiSlice } from "../features/api/votingApiSlice";
+import { searchFieldApiSlice } from "../features/api/searchFieldApiSlice";
 import votingWidgetReducer from "../features/VotingWidget/votingWidgetSlice";
+import searchFieldReducer from "../features/SearchField/searchFieldSlice";
 
 export const store = configureStore({
   reducer: {
     votingWidget: votingWidgetReducer,
-    [apiSlice.reducerPath]: apiSlice.reducer,
+    searchField: searchFieldReducer,
+    [votingApiSlice.reducerPath]: votingApiSlice.reducer,
+    [searchFieldApiSlice.reducerPath]: searchFieldApiSlice.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiSlice.middleware),
+    getDefaultMiddleware()
+      .concat(votingApiSlice.middleware)
+      .concat(searchFieldApiSlice.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

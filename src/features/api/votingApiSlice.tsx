@@ -19,8 +19,8 @@ interface ReturnedImg {
   value: number;
 }
 
-export const apiSlice = createApi({
-  reducerPath: "api",
+export const votingApiSlice = createApi({
+  reducerPath: "votingApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://api.thecatapi.com/v1",
     prepareHeaders: (headers) => {
@@ -88,4 +88,4 @@ export const {
   useVoteImgMutation,
   useDeleteVoteMutation,
   useDeleteFavouriteMutation,
-} = apiSlice;
+} = votingApiSlice;

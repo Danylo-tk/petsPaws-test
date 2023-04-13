@@ -1,7 +1,7 @@
 import {
   useFavouriteImgMutation,
   useVoteImgMutation,
-} from "../../features/api/apiSlice";
+} from "../../features/api/votingApiSlice";
 import { useAppDispatch } from "../../app/hooks";
 import {
   addVote,

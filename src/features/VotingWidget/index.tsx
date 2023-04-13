@@ -1,4 +1,4 @@
-import { useGetRandImgQuery } from "../api/apiSlice";
+import { useGetRandImgQuery } from "../api/votingApiSlice";
 import { useAppSelector } from "../../app/hooks";
 import { RootState } from "../../app/store";
 import {

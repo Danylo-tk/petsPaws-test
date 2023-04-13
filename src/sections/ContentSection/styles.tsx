@@ -40,4 +40,29 @@ const SectionLabel = styled.div`
   background-color: ${palette.pinkPanter};
 `;
 
-export { Container, ContentPart, ContentWrapper, Header, SectionLabel };
+const ImageContainer = styled.div`
+  height: 35rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+`;
+
+const Image = styled.img`
+  top: 0;
+  height: 100%;
+  position: absolute;
+  border-radius: 2rem;
+`;
+
+export {
+  Container,
+  ContentPart,
+  ContentWrapper,
+  Header,
+  SectionLabel,
+  ImageContainer,
+  Image,
+};

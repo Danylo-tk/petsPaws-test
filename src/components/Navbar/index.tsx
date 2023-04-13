@@ -1,23 +1,13 @@
 import { Link } from "react-router-dom";
-import { Container, Search, SearchField } from "./styles";
+import { Container } from "./styles";
 import palette from "../../styles/palette";
 import ImgButton from "../ImgButton";
+import SearchField from "../../features/SearchField";
 
 const Navbar = () => {
   return (
     <Container>
-      <Search>
-        <SearchField type="text" placeholder="Search for breeds by name" />
-        <ImgButton
-          icon={"search"}
-          dimension={4}
-          iconSize={2.5}
-          borderRadius={1}
-          bgColor={palette.rosesAreRed}
-          iconColor={palette.pinkPanter}
-        />
-      </Search>
-
+      <SearchField />
       <Link to="/likes">
         <ImgButton
           icon={"sentiment_satisfied"}

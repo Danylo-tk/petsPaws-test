@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import {
   useGetVotesQuery,
   useDeleteVoteMutation,
-} from "../../features/api/apiSlice";
+} from "../../features/api/votingApiSlice";
 import palette from "../../styles/palette";
 import {
   GalleryGrid,
