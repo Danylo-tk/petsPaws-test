@@ -29,7 +29,7 @@ export const searchFieldApiSlice = createApi({
     getSingleBreed: builder.query<ReturnedBreed, string | undefined>({
       query: (breedId) => "/images/search?breed_ids=" + breedId,
       transformResponse: (res: ReturnedBreed[]) =>
-        res[0] /* here we're extracting, our obj with random image,
+        res[0] /* here we're extracting, our obj with breed information,
       since it's returned inside an array of length one */,
     }),
   }),

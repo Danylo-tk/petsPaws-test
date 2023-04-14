@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
-import ImgButton from "../../components/ImgButton";
+import { RootState } from "../../app/store";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import palette from "../../styles/palette";
 import { Search, Container } from "./styles";
-import { useGetBreedsQuery } from "../api/searchFieldApiSlice";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { setBreedId, setSearchValue } from "./searchFieldSlice";
-import { RootState } from "../../app/store";
+import { setSearchValue } from "./searchFieldSlice";
+import ImgButton from "../../components/ImgButton";
 
 const SearchField = () => {
   const searchValue = useAppSelector(
